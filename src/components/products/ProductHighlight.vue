@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="product">
-      <img :src="`${this.imageUrl}${name}.png`" :alt="description" />
+      <img :src="`/assets/images/products/${name}.png`" :alt="description" />
       <div class="product-info">
         <h2>{{ name }}</h2>
         <p>{{ description }}</p>
