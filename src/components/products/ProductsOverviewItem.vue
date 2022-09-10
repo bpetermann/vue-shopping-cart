@@ -15,7 +15,7 @@
 export default {
   emits: ["selectHighlightedProduct", "addProduct"],
   setup() {
-    const imageUrl = new URL("/assets/images/products/", import.meta.url).href;
+    const imageUrl = "/vue-shopping-cart/assets/images/products/";
     return { imageUrl };
   },
   props: {
