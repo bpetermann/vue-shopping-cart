@@ -1,5 +1,6 @@
 <template>
-  <ShopHeader />
+  <CartModal v-if="showCart" :cart="cart" @toggleCart="toggleCartModal" />
+  <ShopHeader @toggleCart="toggleCartModal" />
   <ShopSearchbar @searchTermHandler="searchTermHandler" />
   <HeroImage />
   <ProductHighlight
@@ -11,12 +12,14 @@
   <ProductsOverview
     :products="filteredItems"
     @selectHighlightedProduct="selectHighlightedProduct"
+    @addToCartHandler="addToCartHandler"
   />
   <ShopNewsletter />
   <ShopFooter />
 </template>
 
 <script>
+import CartModal from "./components/cart/CartModal.vue";
 import ShopHeader from "./components/layout/ShopHeader.vue";
 import ShopSearchbar from "./components/layout/ShopSearchbar.vue";
 import HeroImage from "./components/layout/HeroImage.vue";
@@ -27,6 +30,7 @@ import ShopFooter from "./components/layout/ShopFooter.vue";
 
 export default {
   components: {
+    CartModal,
     ShopHeader,
     ShopSearchbar,
     HeroImage,
@@ -46,6 +50,8 @@ export default {
         amount: 1,
         category: "Shoes",
       },
+      cart: [],
+      showCart: false,
       filteredItems: [
         {
           id: "i1",
@@ -111,6 +117,28 @@ export default {
       this.filteredItems = this.products.filter((prod) => {
         return prod.description.toLowerCase().includes(text.toLowerCase());
       });
+    },
+    addToCartHandler(shopItem) {
+      const existingCartItemIndex = this.cart.findIndex(
+        (item) => item.name === shopItem.name
+      );
+      const existingCartItem = this.cart[existingCartItemIndex];
+      let updatedItems;
+      if (existingCartItem) {
+        const updatedItem = {
+          ...existingCartItem,
+          amount: existingCartItem.amount + 1,
+        };
+        updatedItems = [...this.cart];
+        updatedItems[existingCartItemIndex] = updatedItem;
+        this.cart = updatedItems;
+      } else {
+        this.cart.push(shopItem);
+      }
+      console.log(this.cart);
+    },
+    toggleCartModal() {
+      this.showCart = !this.showCart;
     },
   },
 };

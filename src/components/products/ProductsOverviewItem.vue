@@ -7,13 +7,13 @@
     />
     <span>{{ productDescription }}</span>
     <span>{{ productPrice }} $</span>
-    <button>Add To Cart</button>
+    <button @click="addToCart">Add To Cart</button>
   </div>
 </template>
 
 <script>
 export default {
-  emits: ["selectHighlightedProduct"],
+  emits: ["selectHighlightedProduct", "addToCartHandler"],
   setup() {
     const imageUrl = new URL("../../assets/images/products/", import.meta.url)
       .href;
@@ -30,6 +30,16 @@ export default {
   methods: {
     highlightedProduct() {
       this.$emit("selectHighlightedProduct", this.productId);
+    },
+    addToCart() {
+      this.$emit("addToCartHandler", {
+        id: this.productId,
+        name: this.productName,
+        description: this.productDescription,
+        price: this.productPrice,
+        amount: this.productAmount,
+        category: this.productCategory,
+      });
     },
   },
 };
