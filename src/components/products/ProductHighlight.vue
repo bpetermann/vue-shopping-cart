@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="product">
-      <img :src="`/assets/images/products/${name}.png`" :alt="description" />
+      <img :src="`${this.imageUrl}${name}.png`" :alt="description" />
       <div class="product-info">
         <h2>{{ name }}</h2>
         <p>{{ description }}</p>
@@ -20,7 +20,7 @@
 <script>
 export default {
   setup() {
-    const imageUrl = new URL("/assets/images/products/", import.meta.url).href;
+    const imageUrl = "/vue-shopping-cart/assets/images/products/";
     return { imageUrl };
   },
   emits: ["addProduct"],
