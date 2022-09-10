@@ -1,5 +1,11 @@
 <template>
-  <CartModal v-if="showCart" :cart="cart" @toggleCart="toggleCartModal" />
+  <CartModal
+    v-if="showCart"
+    :cart="cart"
+    @toggleCart="toggleCartModal"
+    @addProduct="addToCartHandler"
+    @removeProduct="removeProductHandler"
+  />
   <ShopHeader @toggleCart="toggleCartModal" />
   <ShopSearchbar @searchTermHandler="searchTermHandler" />
   <HeroImage />
@@ -135,7 +141,24 @@ export default {
       } else {
         this.cart.push(shopItem);
       }
-      console.log(this.cart);
+    },
+    removeProductHandler(shopItem) {
+      const existingCartItemIndex = this.cart.findIndex(
+        (item) => item.name === shopItem.name
+      );
+      const existingCartItem = this.cart[existingCartItemIndex];
+      let updatedItems;
+      if (existingCartItem.amount > 1) {
+        const updatedItem = {
+          ...existingCartItem,
+          amount: existingCartItem.amount - 1,
+        };
+        updatedItems = [...this.cart];
+        updatedItems[existingCartItemIndex] = updatedItem;
+        this.cart = updatedItems;
+      } else {
+        this.cart = this.cart.filter((item) => item.name !== shopItem.name);
+      }
     },
     toggleCartModal() {
       this.showCart = !this.showCart;

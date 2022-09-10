@@ -18,8 +18,8 @@
             </div>
           </div>
           <div class="quantity-control">
-            <button>+</button>
-            <button>–</button>
+            <button @click="$emit('addProduct', product)">+</button>
+            <button @click="$emit('removeProduct', product)">–</button>
           </div>
         </li>
       </ul>
@@ -34,6 +34,8 @@
 
 <script>
 export default {
+  emits: ["toggleCart", "addProduct", "removeProduct"],
+
   props: {
     cart: Array,
   },
@@ -151,13 +153,23 @@ li {
 
 .order-button {
   margin: 1rem;
-  width: 20rem;
+  width: 15rem;
   background-color: #41b883;
   color: #fff;
   font-size: 1rem;
   height: 2.5rem;
   outline: none;
   border: none;
+}
+
+@media (min-width: 40rem) {
+  .order-button {
+    width: 20rem;
+  }
+}
+
+h4 {
+  text-align: left;
 }
 
 .order-button:hover {
