@@ -6,7 +6,10 @@
     @addProduct="addToCartHandler"
     @removeProduct="removeProductHandler"
   />
-  <ShopHeader @toggleCart="toggleCartModal" />
+  <ShopHeader
+    @toggleCart="toggleCartModal"
+    :totalCartProducts="totalCartProducts"
+  />
   <ShopSearchbar @searchTermHandler="searchTermHandler" />
   <HeroImage />
   <ProductHighlight
@@ -111,6 +114,13 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    totalCartProducts() {
+      return this.cart.reduce(function (acc, item) {
+        return acc + item.amount;
+      }, 0);
+    },
   },
   methods: {
     selectHighlightedProduct(prodId) {

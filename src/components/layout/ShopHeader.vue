@@ -5,12 +5,15 @@
         <img class="logo" src="../../assets/logo.svg" alt="vue.logo" />
         shopping cart
       </span>
-      <img
-        class="cart-icon"
-        src="@/assets/images/website/cart.png"
-        alt="cart icon"
-        @click="$emit('toggleCart')"
-      />
+      <button>
+        <img
+          class="cart-icon"
+          src="@/assets/images/website/cart.png"
+          alt="cart icon"
+          @click="$emit('toggleCart')"
+        />
+        <span class="product-amount">{{ totalCartProducts }}</span>
+      </button>
     </div>
   </header>
 </template>
@@ -18,6 +21,9 @@
 <script>
 export default {
   emits: ["toggleCart"],
+  props: {
+    totalCartProducts: Number,
+  },
 };
 </script>
 
@@ -29,6 +35,7 @@ header {
 }
 
 div {
+  width: 95%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -58,10 +65,30 @@ span {
   margin-right: 0.2rem;
 }
 
+button {
+  border: none;
+  background-color: transparent;
+  height: 1.4rem;
+}
+
 .cart-icon {
   height: 1.4rem;
   width: 1.4rem;
   filter: invert(52%) sepia(0%) saturate(0%) hue-rotate(17deg) brightness(88%)
     contrast(91%);
+  cursor: pointer;
+}
+
+.product-amount {
+  padding: 0 0.4rem;
+  vertical-align: middle;
+  position: relative;
+  top: -3.1rem;
+  left: 1rem;
+  border-radius: 50%;
+  background-color: #41b883;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
 }
 </style>
