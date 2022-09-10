@@ -10,7 +10,7 @@
           :product-amount="product.amount"
           :product-category="product.category"
           @selectHighlightedProduct="$emit('selectHighlightedProduct', $event)"
-          @addToCartHandler="$emit('addToCartHandler', $event)"
+          @addProduct="$emit('addProduct', $event)"
         />
       </li>
     </ul>
@@ -20,7 +20,7 @@
 <script>
 import ProductsOverviewItem from "./ProductsOverviewItem.vue";
 export default {
-  emits: ["selectHighlightedProduct", "addToCartHandler"],
+  emits: ["selectHighlightedProduct", "addProduct"],
   components: {
     ProductsOverviewItem,
   },

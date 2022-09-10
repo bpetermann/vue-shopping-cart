@@ -13,15 +13,17 @@
   <ShopSearchbar @searchTermHandler="searchTermHandler" />
   <HeroImage />
   <ProductHighlight
+    :id="highlightedProduct.id"
     :name="highlightedProduct.name"
     :description="highlightedProduct.description"
     :price="highlightedProduct.price"
     :category="highlightedProduct.category"
+    @addProduct="addToCartHandler"
   />
   <ProductsOverview
     :products="filteredItems"
     @selectHighlightedProduct="selectHighlightedProduct"
-    @addToCartHandler="addToCartHandler"
+    @addProduct="addToCartHandler"
   />
   <ShopNewsletter />
   <ShopFooter />

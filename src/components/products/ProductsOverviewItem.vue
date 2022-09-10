@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  emits: ["selectHighlightedProduct", "addToCartHandler"],
+  emits: ["selectHighlightedProduct", "addProduct"],
   setup() {
     const imageUrl = new URL("../../assets/images/products/", import.meta.url)
       .href;
@@ -32,7 +32,7 @@ export default {
       this.$emit("selectHighlightedProduct", this.productId);
     },
     addToCart() {
-      this.$emit("addToCartHandler", {
+      this.$emit("addProduct", {
         id: this.productId,
         name: this.productName,
         description: this.productDescription,

@@ -6,7 +6,7 @@
         <h2>{{ name }}</h2>
         <p>{{ description }}</p>
         <p>€{{ price }}</p>
-        <form>
+        <form @submit.prevent="addToCart">
           <select>
             <option value="one">One Size</option>
           </select>
@@ -24,7 +24,9 @@ export default {
       .href;
     return { imageUrl };
   },
+  emits: ["addProduct"],
   props: {
+    id: String,
     name: String,
     description: String,
     price: Number,
@@ -33,6 +35,16 @@ export default {
   methods: {
     imagePath() {
       return `${this.imageUrl}${this.name}.png`;
+    },
+    addToCart() {
+      this.$emit("addProduct", {
+        id: this.id,
+        name: this.name,
+        description: this.description,
+        price: this.price,
+        amount: 1,
+        category: this.category,
+      });
     },
   },
 };
