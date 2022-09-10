@@ -1,35 +1,19 @@
-# vue-shopping-cart-2
+## Vue Shopping Cart
 
-This template should help get you started developing with Vue 3 in Vite.
+- Just learning Vue by rebuilding my [shopping-cart](https://github.com/bpetermann/shopping-cart) project with vue.js
 
-## Recommended IDE Setup
+### Thanks
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- Model photo by <a href="https://unsplash.com/@sadswim?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">ian dooley</a> on <a href="https://unsplash.com/s/photos/model?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a><br>
+- Product photos by <a href="https://unsplash.com/@ikredenets?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Irene Kredenets</a> on <a href="https://unsplash.com/s/photos/shoes?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 
-## Customize configuration
+### Recommended IDE Setup
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+[VSCode](https://code.visualstudio.com/)
 
-## Project Setup
-
-```sh
+```
+git clone https://github.com/bpetermann/vue-shopping-cart.git
+cd cv-application
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
 ```
