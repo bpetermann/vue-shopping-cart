@@ -5,9 +5,26 @@
       <span></span>
       <span></span>
     </button>
-    <input type="text" placeholder="Search" />
+    <input type="text" placeholder="Search" @input="search" />
   </div>
 </template>
+
+<script>
+export default {
+  emits: ["searchTermHandler"],
+
+  data() {
+    return {
+      searchTerm: "",
+    };
+  },
+  methods: {
+    search(e) {
+      this.$emit("searchTermHandler", e.target.value);
+    },
+  },
+};
+</script>
 
 <style scoped>
 div {

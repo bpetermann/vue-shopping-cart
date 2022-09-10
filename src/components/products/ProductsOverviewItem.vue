@@ -5,8 +5,8 @@
       :alt="productDescription"
       @click="highlightedProduct"
     />
-    <span class="description">{{ productDescription }}</span>
-    <span class="price">{{ productPrice }} $</span>
+    <span>{{ productDescription }}</span>
+    <span>{{ productPrice }} $</span>
     <button>Add To Cart</button>
   </div>
 </template>
@@ -50,9 +50,6 @@ img {
   cursor: pointer;
   width: 10rem;
   height: 14rem;
-}
-.price {
-  margin: 0.6rem 0;
 }
 button {
   cursor: pointer;

@@ -2,7 +2,7 @@
   <header>
     <div>
       <span>
-        <img src="../../assets/logo.svg" alt="vue.logo" />
+        <img class="logo" src="../../assets/logo.svg" alt="vue.logo" />
         shopping cart
       </span>
     </div>
@@ -35,7 +35,7 @@ span {
   color: #000;
 }
 
-img {
+.logo {
   height: 1.4rem;
   width: 1.4rem;
   margin-right: 0.2rem;

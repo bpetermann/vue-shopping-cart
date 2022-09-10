@@ -47,7 +47,7 @@ export default {
 .product {
   padding-top: 1rem;
   padding-bottom: 1rem;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -59,6 +59,7 @@ export default {
   width: 20rem;
   height: 16rem;
   text-align: center;
+  margin-left: 0.5rem;
 }
 
 @media (min-width: 40rem) {
@@ -66,7 +67,7 @@ export default {
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-    max-width: 51rem;
+    max-width: 61rem;
   }
 
   .product-info {

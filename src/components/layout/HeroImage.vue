@@ -40,7 +40,7 @@ img {
 
 @media (min-width: 40rem) {
   .hero {
-    width: 75%;
+    width: 80%;
   }
   img {
     height: 22rem;
