@@ -20,8 +20,7 @@
 <script>
 export default {
   setup() {
-    const imageUrl = new URL("../../assets/images/products/", import.meta.url)
-      .href;
+    const imageUrl = new URL("/assets/images/products/", import.meta.url).href;
     return { imageUrl };
   },
   emits: ["addProduct"],

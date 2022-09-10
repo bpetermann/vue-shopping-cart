@@ -8,7 +8,7 @@
       <button>
         <img
           class="cart-icon"
-          src="@/assets/images/website/cart.png"
+          src="/assets/images/website/cart.png"
           alt="cart icon"
           @click="$emit('toggleCart')"
         />

@@ -15,8 +15,7 @@
 export default {
   emits: ["selectHighlightedProduct", "addProduct"],
   setup() {
-    const imageUrl = new URL("../../assets/images/products/", import.meta.url)
-      .href;
+    const imageUrl = new URL("/assets/images/products/", import.meta.url).href;
     return { imageUrl };
   },
   props: {

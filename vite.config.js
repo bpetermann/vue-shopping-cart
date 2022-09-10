@@ -5,6 +5,7 @@ import vue from "@vitejs/plugin-vue";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "/vue-shopping-cart/",
   plugins: [vue()],
   resolve: {
     alias: {
