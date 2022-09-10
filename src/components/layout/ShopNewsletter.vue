@@ -1,0 +1,81 @@
+<template>
+  <div class="container">
+    <h2>JOIN OUR NEWSLETTER!</h2>
+    <form>
+      <input type="email" id="email" name="email" placeholder="Your Email" />
+      <h3>I'm mostly interested in</h3>
+      <div>
+        <input
+          type="checkbox"
+          id="wfashion"
+          name="wfashion"
+          value="wfashion"
+          defaultChecked="checked"
+        />
+        <label htmlFor="wfashion">Women's Fahsion</label>
+      </div>
+      <div>
+        <input type="checkbox" name="mfashion" value="mfashion" />
+        <label htmlFor="mfashion">Men's Fashion</label>
+      </div>
+      <button type="submit">Add my Email</button>
+    </form>
+  </div>
+</template>
+
+<style scoped>
+.container {
+  margin-top: 4rem;
+  height: 22rem;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+  background-color: #efeff0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+#email {
+  height: 2.5rem;
+  font-size: 1rem;
+  text-align: center;
+  border: 1px solid #d0d1d3;
+}
+
+button {
+  background-color: black;
+  color: #fff;
+  font-size: 1rem;
+  height: 2.5rem;
+  outline: none;
+  border: none;
+  margin-top: 0.5rem;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+@media (min-width: 40rem) {
+  #email {
+    width: 20rem;
+  }
+  button {
+    width: 20rem;
+    margin-top: 0;
+  }
+  .container {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+</style>

@@ -1,14 +1,17 @@
 <template>
   <div class="container">
-    <header>
-      <h3>{{ name }}</h3>
-    </header>
     <div class="product">
       <img :src="`${this.imageUrl}${name}.png`" :alt="description" />
       <div>
-        <p>{{ name }}</p>
+        <h2>{{ name }}</h2>
         <p>{{ description }}</p>
-        <p>{{ price }}</p>
+        <p>€{{ price }}</p>
+        <form>
+          <select>
+            <option value="one">One Size</option>
+          </select>
+          <button>Add To Cart</button>
+        </form>
       </div>
     </div>
   </div>
@@ -29,7 +32,6 @@ export default {
   },
   methods: {
     imagePath() {
-      console.log(`${this.imageUrl}${this.name}.png`);
       return `${this.imageUrl}${this.name}.png`;
     },
   },
@@ -38,11 +40,13 @@ export default {
 
 <style scoped>
 .container {
+  background-color: #ff85a4;
   padding: 1rem;
-  text-align: center;
 }
 
 .product {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   width: 75%;
   margin: 0 auto;
   display: flex;
@@ -50,14 +54,44 @@ export default {
   justify-content: space-between;
   align-items: center;
 }
-
 @media (min-width: 40rem) {
   .product {
     flex-direction: row;
-    max-width: 71rem;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    max-width: 51rem;
   }
 }
 img {
-  height: 12rem;
+  width: 12rem;
+  height: 16rem;
+}
+form {
+  width: 100%;
+}
+
+form select {
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 2;
+  width: 100%;
+  margin-bottom: 2rem;
+  display: block;
+  width: 100%;
+  background-color: #ccc;
+  border: 0.06rem solid #d0d1d3;
+}
+
+button {
+  width: 100%;
+  cursor: pointer;
+  height: 2.25rem;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  background-color: #1a1a1a;
+  color: #fff;
+  border: none;
 }
 </style>

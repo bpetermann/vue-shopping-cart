@@ -9,6 +9,8 @@
     :category="products[1].category"
   />
   <ProductsOverview :products="products" />
+  <ShopNewsletter />
+  <ShopFooter />
 </template>
 
 <script>
@@ -17,6 +19,8 @@ import ShopSearchbar from "./components/layout/ShopSearchbar.vue";
 import HeroImage from "./components/layout/HeroImage.vue";
 import ProductHighlight from "./components/products/ProductHighlight.vue";
 import ProductsOverview from "./components/products/ProductsOverview.vue";
+import ShopNewsletter from "./components/layout/ShopNewsletter.vue";
+import ShopFooter from "./components/layout/ShopFooter.vue";
 
 export default {
   components: {
@@ -25,6 +29,8 @@ export default {
     HeroImage,
     ProductHighlight,
     ProductsOverview,
+    ShopNewsletter,
+    ShopFooter,
   },
   name: "app",
   data() {

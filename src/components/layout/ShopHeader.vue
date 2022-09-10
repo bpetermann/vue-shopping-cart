@@ -20,7 +20,7 @@ header {
 }
 
 div {
-  width: 75%;
+  width: 100%;
   margin: 0 auto;
 }
 

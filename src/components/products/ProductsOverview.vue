@@ -29,7 +29,7 @@ export default {
 
 <style scoped>
 div {
-  background-color: #34495e;
+  background-color: #fff;
 }
 
 ul {
