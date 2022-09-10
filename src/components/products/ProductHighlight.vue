@@ -2,7 +2,7 @@
   <div class="container">
     <div class="product">
       <img :src="`${this.imageUrl}${name}.png`" :alt="description" />
-      <div>
+      <div class="product-info">
         <h2>{{ name }}</h2>
         <p>{{ description }}</p>
         <p>€{{ price }}</p>
@@ -47,20 +47,30 @@ export default {
 .product {
   padding-top: 1rem;
   padding-bottom: 1rem;
-  width: 75%;
+  width: 80%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
+
+.product-info {
+  width: 20rem;
+  height: 16rem;
+  text-align: center;
+}
+
 @media (min-width: 40rem) {
   .product {
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-
     max-width: 51rem;
+  }
+
+  .product-info {
+    text-align: left;
   }
 }
 img {

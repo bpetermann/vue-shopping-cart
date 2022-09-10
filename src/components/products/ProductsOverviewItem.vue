@@ -3,6 +3,7 @@
     <img
       :src="`${this.imageUrl}${productName}.png`"
       :alt="productDescription"
+      @click="highlightedProduct"
     />
     <span class="description">{{ productDescription }}</span>
     <span class="price">{{ productPrice }} $</span>
@@ -12,6 +13,7 @@
 
 <script>
 export default {
+  emits: ["selectHighlightedProduct"],
   setup() {
     const imageUrl = new URL("../../assets/images/products/", import.meta.url)
       .href;
@@ -24,6 +26,11 @@ export default {
     productPrice: Number,
     productAmount: Number,
     productCategory: String,
+  },
+  methods: {
+    highlightedProduct() {
+      this.$emit("selectHighlightedProduct", this.productId);
+    },
   },
 };
 </script>

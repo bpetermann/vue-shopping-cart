@@ -3,12 +3,15 @@
   <ShopSearchbar />
   <HeroImage />
   <ProductHighlight
-    :name="products[1].name"
-    :description="products[1].description"
-    :price="products[1].price"
-    :category="products[1].category"
+    :name="highlightedProduct.name"
+    :description="highlightedProduct.description"
+    :price="highlightedProduct.price"
+    :category="highlightedProduct.category"
   />
-  <ProductsOverview :products="products" />
+  <ProductsOverview
+    :products="products"
+    @selectHighlightedProduct="selectHighlightedProduct"
+  />
   <ShopNewsletter />
   <ShopFooter />
 </template>
@@ -35,6 +38,14 @@ export default {
   name: "app",
   data() {
     return {
+      highlightedProduct: {
+        id: "i1",
+        name: "Sandals",
+        description: "Maroon sandals",
+        price: 24.99,
+        amount: 1,
+        category: "Shoes",
+      },
       products: [
         {
           id: "i1",
@@ -62,6 +73,14 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    selectHighlightedProduct(prodId) {
+      const selectedProduct = this.products.filter(
+        (prod) => prod.id === prodId
+      );
+      this.highlightedProduct = selectedProduct[0];
+    },
   },
 };
 </script>

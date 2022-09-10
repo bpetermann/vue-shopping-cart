@@ -9,6 +9,7 @@
           :product-price="product.price"
           :product-amount="product.amount"
           :product-category="product.category"
+          @selectHighlightedProduct="$emit('selectHighlightedProduct', $event)"
         />
       </li>
     </ul>
@@ -18,6 +19,7 @@
 <script>
 import ProductsOverviewItem from "./ProductsOverviewItem.vue";
 export default {
+  emits: ["selectHighlightedProduct"],
   components: {
     ProductsOverviewItem,
   },
