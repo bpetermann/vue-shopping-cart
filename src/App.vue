@@ -2,7 +2,13 @@
   <ShopHeader />
   <ShopSearchbar />
   <HeroImage />
-  <ProductHighlight />
+  <ProductHighlight
+    :name="products[1].name"
+    :description="products[1].description"
+    :price="products[1].price"
+    :category="products[1].category"
+  />
+  <ProductsOverview :products="products" />
 </template>
 
 <script>
@@ -10,6 +16,7 @@ import ShopHeader from "./components/layout/ShopHeader.vue";
 import ShopSearchbar from "./components/layout/ShopSearchbar.vue";
 import HeroImage from "./components/layout/HeroImage.vue";
 import ProductHighlight from "./components/products/ProductHighlight.vue";
+import ProductsOverview from "./components/products/ProductsOverview.vue";
 
 export default {
   components: {
@@ -17,6 +24,7 @@ export default {
     ShopSearchbar,
     HeroImage,
     ProductHighlight,
+    ProductsOverview,
   },
   name: "app",
   data() {
