@@ -82,7 +82,7 @@ button {
   top: -3.1rem;
   left: 1rem;
   border-radius: 50%;
-  background-color: #41b883;
+  background-color: #ff6900;
   font-size: 0.9rem;
   font-weight: 600;
   color: #fff;

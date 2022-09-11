@@ -93,7 +93,7 @@ main {
 .close-button {
   margin: 1rem;
   width: 20rem;
-  background-color: #41b883;
+  background-color: #ff6900;
   color: #fff;
   font-size: 1rem;
   height: 2.5rem;
@@ -132,7 +132,7 @@ li {
 .order-button {
   margin: 1rem;
   width: 15rem;
-  background-color: #41b883;
+  background-color: #ff6900;
   color: #fff;
   font-size: 1rem;
   height: 2.5rem;

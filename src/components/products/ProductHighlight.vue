@@ -134,8 +134,8 @@ form select {
 }
 
 .added {
-  background-color: #41b883;
-  border-color: #41b883;
+  background-color: #009066;
+  border-color: #009066;
   color: #fff;
 }
 

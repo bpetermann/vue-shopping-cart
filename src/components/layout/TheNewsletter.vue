@@ -1,8 +1,14 @@
 <template>
   <section>
     <h2>JOIN OUR NEWSLETTER!</h2>
-    <form>
-      <input type="email" id="email" name="email" placeholder="Your Email" />
+    <form @submit.prevent="emailInput">
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Your Email"
+        v-model="email"
+      />
       <h3>I'm mostly interested in</h3>
       <div>
         <input
@@ -20,8 +26,39 @@
       </div>
       <button type="submit">Add my Email</button>
     </form>
+    <UserInfo v-if="popupInfo">
+      <h1>Thank you for joining!</h1>
+      <h4>{{ email }}</h4>
+      <p>(Your email wasn't stored)</p>
+      <button @click="closeInfo" class="close-info">Close</button>
+    </UserInfo>
   </section>
 </template>
+
+<script>
+import UserInfo from "../ui/UserInfo.vue";
+
+export default {
+  name: "TheNewsletter",
+  components: {
+    UserInfo,
+  },
+  data() {
+    return {
+      email: "",
+      popupInfo: false,
+    };
+  },
+  methods: {
+    emailInput() {
+      this.popupInfo = true;
+    },
+    closeInfo() {
+      this.popupInfo = false;
+    },
+  },
+};
+</script>
 
 <style scoped>
 section {
@@ -77,5 +114,21 @@ button:hover {
     flex-direction: row;
     align-items: center;
   }
+}
+
+h4 {
+  font-weight: 100;
+  text-decoration: underline;
+  color: #3498db;
+}
+
+p {
+  color: #818181;
+}
+
+.close-info {
+  cursor: pointer;
+  background-color: #41b883;
+  width: 5rem;
 }
 </style>
