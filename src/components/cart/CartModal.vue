@@ -1,4 +1,5 @@
 <template>
+  <CartBackdrop @toggleCart="$emit('toggleCart', $event)" />
   <div class="cart-modal">
     <button
       class="close-button"
@@ -33,7 +34,12 @@
 </template>
 
 <script>
+import CartBackdrop from "./CartBackdrop.vue";
+
 export default {
+  components: {
+    CartBackdrop,
+  },
   emits: ["toggleCart", "addProduct", "removeProduct"],
 
   props: {
@@ -57,7 +63,7 @@ export default {
   left: 5%;
   top: 25%;
   width: 90%;
-  z-index: 30;
+  z-index: 100;
   background-color: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
