@@ -11,17 +11,11 @@
     <main v-else>
       <ul>
         <li v-for="product in cart" :key="product.productId">
-          <div>
-            <h4>{{ product.name }}</h4>
-            <div class="product-detail">
-              <span>{{ (product.amount * product.price).toFixed(2) }} $</span>
-              <span>{{ product.amount }}X</span>
-            </div>
-          </div>
-          <div class="quantity-control">
-            <button @click="$emit('addProduct', product)">+</button>
-            <button @click="$emit('removeProduct', product)">–</button>
-          </div>
+          <CartModalItem
+            :product="product"
+            @addProduct="$emit('addProduct', $event)"
+            @removeProduct="$emit('removeProduct', $event)"
+          />
         </li>
       </ul>
       <div class="total-amuount">
@@ -35,11 +29,13 @@
 
 <script>
 import CartBackdrop from "./CartBackdrop.vue";
+import CartModalItem from "./CartModalItem.vue";
 
 export default {
   name: "CartModal",
   components: {
     CartBackdrop,
+    CartModalItem,
   },
   emits: ["toggleCart", "addProduct", "removeProduct"],
   props: {
@@ -125,33 +121,6 @@ li {
   align-items: center;
 }
 
-.product-detail {
-  display: flex;
-  width: 8rem;
-  justify-content: space-between;
-}
-
-.quantity-control {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.quantity-control button {
-  width: 2rem;
-  height: 2rem;
-  background-color: #fff;
-  outline: none;
-  border: 1px solid #000;
-  font-size: 1rem;
-}
-
-.quantity-control button:hover {
-  border: 2px solid #000;
-  opacity: 0.8;
-}
-
 .total-amuount {
   width: 75%;
   margin: 1rem 0;
@@ -175,10 +144,6 @@ li {
   .order-button {
     width: 20rem;
   }
-}
-
-h4 {
-  text-align: left;
 }
 
 .order-button:hover {
