@@ -37,13 +37,16 @@
 import CartBackdrop from "./CartBackdrop.vue";
 
 export default {
+  name: "CartModal",
   components: {
     CartBackdrop,
   },
   emits: ["toggleCart", "addProduct", "removeProduct"],
-
   props: {
-    cart: Array,
+    cart: {
+      type: Array,
+      required: true,
+    },
   },
   computed: {
     totalPrice() {

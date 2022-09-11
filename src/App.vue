@@ -1,23 +1,21 @@
 <template>
-  <CartModal
-    v-if="showCart"
-    :cart="cart"
-    @toggleCart="toggleCartModal"
-    @addProduct="addToCartHandler"
-    @removeProduct="removeProductHandler"
-  />
-  <ShopHeader
+  <teleport to="body">
+    <CartModal
+      v-if="showCart"
+      :cart="cart"
+      @toggleCart="toggleCartModal"
+      @addProduct="addToCartHandler"
+      @removeProduct="removeProductHandler"
+    />
+  </teleport>
+  <TheHeader
     @toggleCart="toggleCartModal"
     :totalCartProducts="totalCartProducts"
   />
-  <ShopSearchbar @searchTermHandler="searchTermHandler" />
-  <HeroImage />
+  <TheSearchbar @searchTermHandler="searchTermHandler" />
+  <TheHero />
   <ProductHighlight
-    :id="highlightedProduct.id"
-    :name="highlightedProduct.name"
-    :description="highlightedProduct.description"
-    :price="highlightedProduct.price"
-    :category="highlightedProduct.category"
+    :product="highlightedProduct"
     @addProduct="addToCartHandler"
   />
   <ProductsOverview
@@ -25,30 +23,30 @@
     @selectHighlightedProduct="selectHighlightedProduct"
     @addProduct="addToCartHandler"
   />
-  <ShopNewsletter />
-  <ShopFooter />
+  <TheNewsletter />
+  <TheFooter />
 </template>
 
 <script>
 import CartModal from "./components/cart/CartModal.vue";
-import ShopHeader from "./components/layout/ShopHeader.vue";
-import ShopSearchbar from "./components/layout/ShopSearchbar.vue";
-import HeroImage from "./components/layout/HeroImage.vue";
+import TheHeader from "./components/layout/TheHeader.vue";
+import TheSearchbar from "./components/layout/TheSearchbar.vue";
+import TheHero from "./components/layout/TheHero.vue";
 import ProductHighlight from "./components/products/ProductHighlight.vue";
 import ProductsOverview from "./components/products/ProductsOverview.vue";
-import ShopNewsletter from "./components/layout/ShopNewsletter.vue";
-import ShopFooter from "./components/layout/ShopFooter.vue";
+import TheNewsletter from "./components/layout/TheNewsletter.vue";
+import TheFooter from "./components/layout/TheFooter.vue";
 
 export default {
   components: {
     CartModal,
-    ShopHeader,
-    ShopSearchbar,
-    HeroImage,
+    TheHeader,
+    TheSearchbar,
+    TheHero,
     ProductHighlight,
     ProductsOverview,
-    ShopNewsletter,
-    ShopFooter,
+    TheNewsletter,
+    TheFooter,
   },
   name: "app",
   data() {

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section>
     <ul>
       <li v-for="product in products" :key="product.id">
         <ProductsOverviewItem
@@ -14,24 +14,28 @@
         />
       </li>
     </ul>
-  </div>
+  </section>
 </template>
 
 <script>
 import ProductsOverviewItem from "./ProductsOverviewItem.vue";
 export default {
+  name: "ProductsOverview",
   emits: ["selectHighlightedProduct", "addProduct"],
   components: {
     ProductsOverviewItem,
   },
   props: {
-    products: Array,
+    products: {
+      type: Array,
+      required: true,
+    },
   },
 };
 </script>
 
 <style scoped>
-div {
+section {
   background-color: #fff;
 }
 

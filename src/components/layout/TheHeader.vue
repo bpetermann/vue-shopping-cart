@@ -20,6 +20,7 @@
 
 <script>
 export default {
+  name: "TheHeader",
   emits: ["toggleCart"],
   props: {
     totalCartProducts: Number,

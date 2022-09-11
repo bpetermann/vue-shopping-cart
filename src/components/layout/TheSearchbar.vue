@@ -1,18 +1,18 @@
 <template>
-  <div>
+  <section>
     <button>
       <span></span>
       <span></span>
       <span></span>
     </button>
     <input type="text" placeholder="Search" @input="search" />
-  </div>
+  </section>
 </template>
 
 <script>
 export default {
+  name: "TheSearchbar",
   emits: ["searchTermHandler"],
-
   data() {
     return {
       searchTerm: "",
@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style scoped>
-div {
+section {
   display: flex;
   flex-direction: row;
   width: 100%;

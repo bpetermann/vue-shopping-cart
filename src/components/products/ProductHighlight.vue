@@ -1,11 +1,14 @@
 <template>
-  <div class="container">
+  <section>
     <div class="product">
-      <img :src="`${this.imageUrl}${name}.png`" :alt="description" />
+      <img
+        :src="`${this.imageUrl}${product.name}.png`"
+        :alt="product.description"
+      />
       <div class="product-info">
-        <h2>{{ name }}</h2>
-        <p>{{ description }}</p>
-        <p>€{{ price }}</p>
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.description }}</p>
+        <p>€{{ product.price }}</p>
         <form @submit.prevent="addToCart">
           <select>
             <option value="one">One Size</option>
@@ -14,44 +17,37 @@
         </form>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
 export default {
+  name: "ProductHighlight",
   setup() {
     const imageUrl = "/vue-shopping-cart/assets/images/products/";
     return { imageUrl };
   },
   emits: ["addProduct"],
   props: {
-    id: String,
-    name: String,
-    description: String,
-    price: Number,
-    category: String,
+    product: {
+      type: Object,
+      required: true,
+      validator: function (value) {
+        return Object.hasOwn(value, "id");
+      },
+    },
   },
   methods: {
-    imagePath() {
-      return `${this.imageUrl}${this.name}.png`;
-    },
     addToCart() {
-      this.$emit("addProduct", {
-        id: this.id,
-        name: this.name,
-        description: this.description,
-        price: this.price,
-        amount: 1,
-        category: this.category,
-      });
+      this.$emit("addProduct", this.product);
     },
   },
 };
 </script>
 
 <style scoped>
-.container {
-  background-color: #ff85a4;
+section {
+  background-color: #ffe4f8;
   padding: 1rem;
 }
 

@@ -13,18 +13,19 @@
 
 <script>
 export default {
+  name: "ProductsOverviewItem",
   emits: ["selectHighlightedProduct", "addProduct"],
   setup() {
     const imageUrl = "/vue-shopping-cart/assets/images/products/";
     return { imageUrl };
   },
   props: {
-    productId: String,
-    productName: String,
-    productDescription: String,
-    productPrice: Number,
-    productAmount: Number,
-    productCategory: String,
+    productId: { type: String, required: true },
+    productName: { type: String, required: true },
+    productDescription: { type: String, required: true },
+    productPrice: { type: Number, required: true },
+    productAmount: { type: Number, required: true },
+    productCategory: { type: String, required: true },
   },
   methods: {
     highlightedProduct() {

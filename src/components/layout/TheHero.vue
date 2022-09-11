@@ -12,7 +12,7 @@
 
 <style scoped>
 .container {
-  background-color: #c44f70;
+  background-color: #da97b5;
 }
 
 .hero {

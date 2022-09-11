@@ -1,6 +1,6 @@
 <template>
-  <div class="background">
-    <div class="container">
+  <section>
+    <div>
       <nav class="nav-icons">
         <img src="/assets/images/website/twitter.png" alt="Twitter Icon" />
         <img src="/assets/images/website/spotify.png" alt="Spotify Icon" />
@@ -13,16 +13,16 @@
         <a href="https://github.com/bpetermann">Cookie Preferences</a>
       </nav>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped>
-.background {
+section {
   height: 20rem;
   background-color: #1a1a1a;
 }
 
-.container {
+div {
   width: 90%;
   max-width: 70rem;
   height: 100%;

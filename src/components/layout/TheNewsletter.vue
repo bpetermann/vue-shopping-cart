@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <section>
     <h2>JOIN OUR NEWSLETTER!</h2>
     <form>
       <input type="email" id="email" name="email" placeholder="Your Email" />
@@ -20,11 +20,11 @@
       </div>
       <button type="submit">Add my Email</button>
     </form>
-  </div>
+  </section>
 </template>
 
 <style scoped>
-.container {
+section {
   margin-top: 4rem;
   height: 22rem;
   background-color: #fff;
@@ -73,7 +73,7 @@ button:hover {
     width: 20rem;
     margin-top: 0;
   }
-  .container {
+  section {
     flex-direction: row;
     align-items: center;
   }
