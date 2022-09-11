@@ -13,7 +13,15 @@
           <select>
             <option value="one">One Size</option>
           </select>
-          <button>Add To Cart</button>
+          <button :class="buttonStyle">
+            <span v-if="buttonStyle.includes('loading')">
+              <img
+                class="spinner"
+                src="/assets/images/website/spinner.gif"
+                alt="Loading..."
+            /></span>
+            <span v-else> Add To Cart</span>
+          </button>
         </form>
       </div>
     </div>
@@ -37,9 +45,21 @@ export default {
       },
     },
   },
+  data() {
+    return {
+      buttonStyle: "add-btn",
+    };
+  },
   methods: {
     addToCart() {
       this.$emit("addProduct", this.product);
+      this.buttonStyle = "add-btn loading";
+      setTimeout(() => {
+        this.buttonStyle = "add-btn added";
+        setTimeout(() => {
+          this.buttonStyle = "add-btn ";
+        }, 750);
+      }, 500);
     },
   },
 };
@@ -101,7 +121,7 @@ form select {
   border: 0.06rem solid #d0d1d3;
 }
 
-button {
+.add-btn {
   width: 100%;
   cursor: pointer;
   height: 2.25rem;
@@ -111,5 +131,18 @@ button {
   background-color: #1a1a1a;
   color: #fff;
   border: none;
+}
+
+.added {
+  background-color: #41b883;
+  border-color: #41b883;
+  color: #fff;
+}
+
+.spinner {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: auto;
+  display: block;
 }
 </style>

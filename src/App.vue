@@ -124,7 +124,7 @@ export default {
   },
   methods: {
     selectHighlightedProduct(prodId) {
-      const selectedProduct = this.products.filter(
+      const selectedProduct = this.filteredItems.filter(
         (prod) => prod.id === prodId
       );
       this.highlightedProduct = selectedProduct[0];

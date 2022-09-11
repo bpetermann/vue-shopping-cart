@@ -3,12 +3,7 @@
     <ul>
       <li v-for="product in products" :key="product.id">
         <ProductsOverviewItem
-          :product-name="product.name"
-          :product-id="product.id"
-          :product-description="product.description"
-          :product-price="product.price"
-          :product-amount="product.amount"
-          :product-category="product.category"
+          :product="product"
           @selectHighlightedProduct="$emit('selectHighlightedProduct', $event)"
           @addProduct="$emit('addProduct', $event)"
         />

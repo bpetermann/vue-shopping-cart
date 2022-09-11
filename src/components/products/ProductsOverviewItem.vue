@@ -1,13 +1,21 @@
 <template>
   <div>
     <img
-      :src="`${this.imageUrl}${productName}.png`"
-      :alt="productDescription"
+      :src="`${this.imageUrl}${product.name}.png`"
+      :alt="product.description"
       @click="highlightedProduct"
     />
-    <span>{{ productDescription }}</span>
-    <span>{{ productPrice }} $</span>
-    <button @click="addToCart">Add To Cart</button>
+    <span>{{ product.description }}</span>
+    <span>{{ product.price }} $</span>
+    <button @click="addToCart" :class="buttonStyle">
+      <span v-if="buttonStyle.includes('loading')">
+        <img
+          class="spinner"
+          src="/assets/images/website/spinner.gif"
+          alt="Loading..."
+      /></span>
+      <span v-else> Add To Cart</span>
+    </button>
   </div>
 </template>
 
@@ -20,26 +28,26 @@ export default {
     return { imageUrl };
   },
   props: {
-    productId: { type: String, required: true },
-    productName: { type: String, required: true },
-    productDescription: { type: String, required: true },
-    productPrice: { type: Number, required: true },
-    productAmount: { type: Number, required: true },
-    productCategory: { type: String, required: true },
+    product: { type: Object, required: true },
+  },
+  data() {
+    return {
+      buttonStyle: "add-btn",
+    };
   },
   methods: {
     highlightedProduct() {
-      this.$emit("selectHighlightedProduct", this.productId);
+      this.$emit("selectHighlightedProduct", this.product.id);
     },
     addToCart() {
-      this.$emit("addProduct", {
-        id: this.productId,
-        name: this.productName,
-        description: this.productDescription,
-        price: this.productPrice,
-        amount: this.productAmount,
-        category: this.productCategory,
-      });
+      this.$emit("addProduct", this.product);
+      this.buttonStyle = "add-btn loading";
+      setTimeout(() => {
+        this.buttonStyle = "add-btn added";
+        setTimeout(() => {
+          this.buttonStyle = "add-btn ";
+        }, 750);
+      }, 500);
     },
   },
 };
@@ -61,7 +69,7 @@ img {
   width: 10rem;
   height: 14rem;
 }
-button {
+.add-btn {
   cursor: pointer;
   background-color: transparent;
   outline: none;
@@ -69,5 +77,18 @@ button {
   width: 8rem;
   height: 3rem;
   font-size: 1rem;
+}
+
+.added {
+  background-color: #41b883;
+  border-color: #41b883;
+  color: #fff;
+}
+
+.spinner {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: auto;
+  display: block;
 }
 </style>
