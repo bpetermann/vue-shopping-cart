@@ -36,16 +36,11 @@ header {
 
 div {
   width: 95%;
+  max-width: 75rem;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-@media (min-width: 40rem) {
-  div {
-    width: 75%;
-  }
 }
 
 span {
