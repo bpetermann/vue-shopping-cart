@@ -120,6 +120,7 @@ h4 {
   font-weight: 100;
   text-decoration: underline;
   color: #3498db;
+  margin: 0;
 }
 
 p {
