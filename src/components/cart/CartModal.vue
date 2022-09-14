@@ -1,30 +1,32 @@
 <template>
-  <CartBackdrop @toggleCart="$emit('toggleCart', $event)" />
-  <div class="cart-modal">
-    <button
-      class="close-button"
-      v-if="cart.length === 0"
-      @click="$emit('toggleCart')"
-    >
-      No items (yet!)
-    </button>
-    <main v-else>
-      <ul>
-        <li v-for="product in cart" :key="product.productId">
-          <CartModalItem
-            :product="product"
-            @addProduct="$emit('addProduct', $event)"
-            @removeProduct="$emit('removeProduct', $event)"
-          />
-        </li>
-      </ul>
-      <div class="total-amuount">
-        <span>Total Amount</span>
-        <span>{{ totalPrice }} $</span>
-      </div>
-      <button class="order-button">Order</button>
-    </main>
-  </div>
+  <teleport to="body">
+    <CartBackdrop @toggleCart="$emit('toggleCart', $event)" />
+    <div class="cart-modal">
+      <button
+        class="close-button"
+        v-if="cart.length === 0"
+        @click="$emit('toggleCart')"
+      >
+        No items (yet!)
+      </button>
+      <main v-else>
+        <ul>
+          <li v-for="product in cart" :key="product.productId">
+            <CartModalItem
+              :product="product"
+              @addProduct="$emit('addProduct', $event)"
+              @removeProduct="$emit('removeProduct', $event)"
+            />
+          </li>
+        </ul>
+        <div class="total-amuount">
+          <span>Total Amount</span>
+          <span>{{ totalPrice }} $</span>
+        </div>
+        <button class="order-button">Order</button>
+      </main>
+    </div>
+  </teleport>
 </template>
 
 <script>

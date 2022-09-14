@@ -7,7 +7,7 @@
         id="email"
         name="email"
         placeholder="Your Email"
-        v-model="email"
+        v-model.trim="email"
       />
       <h3>I'm mostly interested in</h3>
       <div>
@@ -26,11 +26,10 @@
       </div>
       <button type="submit">Add my Email</button>
     </form>
-    <UserInfo v-if="popupInfo">
-      <h1>Thank you for joining!</h1>
+    <UserInfo v-if="popupInfo" @close="closeInfo">
+      <h2>{{ infoMessage }}</h2>
       <h4>{{ email }}</h4>
-      <p>(Your email wasn't stored)</p>
-      <button @click="closeInfo" class="close-info">Close</button>
+      <button @click="closeInfo" :class="hasValidEmail">Close</button>
     </UserInfo>
   </section>
 </template>
@@ -46,14 +45,32 @@ export default {
   data() {
     return {
       email: "",
+      validEmail: false,
       popupInfo: false,
     };
   },
+  computed: {
+    hasValidEmail() {
+      return this.validEmail ? "close-info" : "close-info warning";
+    },
+    infoMessage() {
+      return this.validEmail
+        ? "Thank you for joining!"
+        : "Please enter a valid email";
+    },
+  },
   methods: {
     emailInput() {
-      this.popupInfo = true;
+      if (this.email === "") {
+        this.popupInfo = true;
+      } else {
+        this.validEmail = true;
+        this.popupInfo = true;
+      }
     },
     closeInfo() {
+      this.email = "";
+      this.validEmail = false;
       this.popupInfo = false;
     },
   },
@@ -116,11 +133,14 @@ button:hover {
   }
 }
 
+h2 {
+  margin-bottom: 0rem;
+}
+
 h4 {
   font-weight: 100;
   text-decoration: underline;
   color: #3498db;
-  margin: 0;
 }
 
 p {
@@ -130,6 +150,12 @@ p {
 .close-info {
   cursor: pointer;
   background-color: #41b883;
+  width: 5rem;
+}
+
+.warning {
+  cursor: pointer;
+  background-color: #ff7a5d;
   width: 5rem;
 }
 </style>

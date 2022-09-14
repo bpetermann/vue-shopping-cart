@@ -1,13 +1,11 @@
 <template>
-  <teleport to="body">
-    <CartModal
-      v-if="showCart"
-      :cart="cart"
-      @toggleCart="toggleCartModal"
-      @addProduct="addToCartHandler"
-      @removeProduct="removeProductHandler"
-    />
-  </teleport>
+  <CartModal
+    v-if="showCart"
+    :cart="cart"
+    @toggleCart="toggleCartModal"
+    @addProduct="addToCartHandler"
+    @removeProduct="removeProductHandler"
+  />
   <TheHeader
     @toggleCart="toggleCartModal"
     :totalCartProducts="totalCartProducts"
