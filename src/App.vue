@@ -16,15 +16,23 @@
     :active="categoryActive"
   />
   <TheHero @selectCategory="selectCategoryHandler" />
-  <ProductHighlight
-    :product="highlightedProduct"
-    @addProduct="addToCartHandler"
-  />
-  <ProductsOverview
-    :products="filteredItems"
-    @selectHighlightedProduct="selectHighlightedProduct"
-    @addProduct="addToCartHandler"
-  />
+  <span v-if="isLoading">
+    <img
+      class="loading"
+      src="/assets/images/website/spinner.gif"
+      alt="Loading..."
+  /></span>
+  <template v-else>
+    <ProductHighlight
+      :product="highlightedProduct"
+      @addProduct="addToCartHandler"
+    />
+    <ProductsOverview
+      :products="filteredItems"
+      @selectHighlightedProduct="selectHighlightedProduct"
+      @addProduct="addToCartHandler"
+    />
+  </template>
   <TheNewsletter />
   <TheFooter />
 </template>
@@ -57,49 +65,30 @@ export default {
     return {
       highlightedProduct: null,
       cart: [],
+      isLoading: true,
       showCart: false,
-      selectedCategory: null,
-      filteredItems: null,
+      selectedCategory: "Shoes",
+      selectedCategoryProducts: null,
       searchTerm: "",
-      products: [
-        {
-          id: "i1",
-          name: "Sandals",
-          description: "Maroon sandals",
-          price: 24.99,
-          amount: 1,
-          category: "Shoes",
-        },
-        {
-          id: "i2",
-          name: "Brogues",
-          description: "Mint green lace up brogues",
-          price: 85.99,
-          amount: 1,
-          category: "Shoes",
-        },
-        {
-          id: "i3",
-          name: "Sneakers",
-          description: "Multi-coloured Sneakers",
-          price: 69.99,
-          amount: 1,
-          category: "Shoes",
-        },
-        {
-          id: "i4",
-          name: "Handbag",
-          description: "Brown leather handbag",
-          price: 89.99,
-          amount: 1,
-          category: "Bags",
-        },
-      ],
+      filteredItems: null,
+      products: [],
     };
   },
-  beforeMount() {
-    this.selectCategoryHandler("Shoes");
-    this.selectHighlightedProduct(this.selectedCategory[0].id);
+  async mounted() {
+    const response = await fetch(
+      "https://my-json-server.typicode.com/bpetermann/shopping-cart-jsonserver/storeItems",
+      {}
+    );
+
+    if (!response.ok) {
+      throw new Error("Something went wrong, please try again");
+    }
+
+    const data = await response.json();
+    this.products = data;
+    this.selectCategoryHandler(this.selectedCategory);
+    this.selectHighlightedProduct(this.selectedCategoryProducts[0].id);
+    this.isLoading = false;
   },
   computed: {
     totalCartProducts() {
@@ -108,7 +97,7 @@ export default {
       }, 0);
     },
     categoryActive() {
-      return this.selectedCategory[0].category;
+      return this.selectedCategory;
     },
   },
   methods: {
@@ -119,14 +108,15 @@ export default {
       this.highlightedProduct = selectedProduct[0];
     },
     selectCategoryHandler(category) {
-      this.selectedCategory = this.products.filter((prod) => {
+      this.selectedCategory = category;
+      this.selectedCategoryProducts = this.products.filter((prod) => {
         return prod.category.toLowerCase().includes(category.toLowerCase());
       });
       this.searchTermHandler(this.searchTerm);
     },
     searchTermHandler(text) {
       this.searchTerm = text;
-      this.filteredItems = this.selectedCategory.filter((prod) => {
+      this.filteredItems = this.selectedCategoryProducts.filter((prod) => {
         return prod.description.toLowerCase().includes(text.toLowerCase());
       });
     },
@@ -173,4 +163,12 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.loading {
+  width: 2rem;
+  height: 2rem;
+  margin: auto;
+  padding-top: 4rem;
+  display: block;
+}
+</style>
