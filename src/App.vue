@@ -22,7 +22,7 @@
       src="/assets/images/website/spinner.gif"
       alt="Loading..."
   /></span>
-  <template v-else>
+  <template v-else-if="!isLoading && products.length !== 0">
     <ProductHighlight
       :product="highlightedProduct"
       @addProduct="addToCartHandler"
@@ -33,7 +33,7 @@
       @addProduct="addToCartHandler"
     />
   </template>
-  <TheNewsletter />
+  <p v-else>Something went wrong, please try again</p>
   <TheFooter />
 </template>
 
@@ -45,7 +45,6 @@ import TheCategories from "./components/layout/TheCategories.vue";
 import TheHero from "./components/layout/TheHero.vue";
 import ProductHighlight from "./components/products/ProductHighlight.vue";
 import ProductsOverview from "./components/products/ProductsOverview.vue";
-import TheNewsletter from "./components/layout/TheNewsletter.vue";
 import TheFooter from "./components/layout/TheFooter.vue";
 
 export default {
@@ -57,7 +56,6 @@ export default {
     TheHero,
     ProductHighlight,
     ProductsOverview,
-    TheNewsletter,
     TheFooter,
   },
   name: "app",
@@ -65,7 +63,7 @@ export default {
     return {
       highlightedProduct: null,
       cart: [],
-      isLoading: true,
+      isLoading: false,
       showCart: false,
       selectedCategory: "Shoes",
       selectedCategoryProducts: null,
@@ -75,12 +73,14 @@ export default {
     };
   },
   async mounted() {
+    this.isLoading = true;
     const response = await fetch(
       "https://my-json-server.typicode.com/bpetermann/shopping-cart-jsonserver/storeItems",
       {}
     );
 
     if (!response.ok) {
+      this.isLoading = false;
       throw new Error("Something went wrong, please try again");
     }
 
@@ -170,5 +170,10 @@ export default {
   margin: auto;
   padding-top: 4rem;
   display: block;
+}
+
+p {
+  margin-top: 2rem;
+  text-align: center;
 }
 </style>

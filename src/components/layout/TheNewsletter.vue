@@ -27,7 +27,7 @@
       <button type="submit">Add my Email</button>
     </form>
     <UserInfo v-if="popupInfo" @close="closeInfo">
-      <h2>{{ infoMessage }}</h2>
+      <h3>{{ infoMessage }}</h3>
       <h4>{{ email }}</h4>
       <button @click="closeInfo" :class="hasValidEmail">Close</button>
     </UserInfo>
@@ -133,7 +133,7 @@ button:hover {
   }
 }
 
-h2 {
+h3 {
   margin-bottom: 0rem;
 }
 

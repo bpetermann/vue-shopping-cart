@@ -1,5 +1,6 @@
 <template>
-  <section>
+  <TheNewsletter />
+  <footer>
     <div>
       <nav class="nav-icons">
         <img src="/assets/images/website/twitter.png" alt="Twitter Icon" />
@@ -13,11 +14,22 @@
         <a href="https://github.com/bpetermann">Cookie Preferences</a>
       </nav>
     </div>
-  </section>
+  </footer>
 </template>
 
+<script>
+import TheNewsletter from "./TheNewsletter.vue";
+
+export default {
+  name: "TheFooter",
+  components: {
+    TheNewsletter,
+  },
+};
+</script>
+
 <style scoped>
-section {
+footer {
   height: 20rem;
   background-color: #1a1a1a;
 }
