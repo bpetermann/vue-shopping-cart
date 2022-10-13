@@ -2,10 +2,7 @@
   <section>
     <ul>
       <li v-for="product in filteredItems" :key="product.id">
-        <ProductsOverviewItem
-          :product="product"
-          @addProduct="$emit('addProduct', $event)"
-        />
+        <ProductsOverviewItem :product="product" />
       </li>
     </ul>
   </section>
@@ -15,7 +12,6 @@
 import ProductsOverviewItem from "./ProductsOverviewItem.vue";
 export default {
   name: "ProductsOverview",
-  emits: ["addProduct"],
   components: {
     ProductsOverviewItem,
   },

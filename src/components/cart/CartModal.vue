@@ -1,22 +1,18 @@
 <template>
   <teleport to="body">
-    <CartBackdrop @toggleCart="$emit('toggleCart', $event)" />
+    <CartBackdrop />
     <div class="cart-modal">
       <button
         class="close-button"
         v-if="cart.length === 0"
-        @click="$emit('toggleCart')"
+        @click="toggleCartModal"
       >
         No items (yet!)
       </button>
       <main v-else>
         <ul>
           <li v-for="product in cart" :key="product.productId">
-            <CartModalItem
-              :product="product"
-              @addProduct="$emit('addProduct', $event)"
-              @removeProduct="$emit('removeProduct', $event)"
-            />
+            <CartModalItem :product="product" />
           </li>
         </ul>
         <div class="total-amuount">
@@ -39,19 +35,20 @@ export default {
     CartBackdrop,
     CartModalItem,
   },
-  emits: ["toggleCart", "addProduct", "removeProduct"],
-  props: {
-    cart: {
-      type: Array,
-      required: true,
-    },
-  },
   computed: {
+    cart() {
+      return this.$store.getters["cart/cart"];
+    },
     totalPrice() {
       const totalPrice = this.cart.reduce(function (acc, prod) {
         return acc + prod.amount * prod.price;
       }, 0);
       return totalPrice.toFixed(2);
+    },
+  },
+  methods: {
+    toggleCartModal() {
+      this.$store.dispatch("cart/toggleCartModal");
     },
   },
 };

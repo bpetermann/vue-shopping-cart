@@ -7,19 +7,30 @@
     </div>
   </div>
   <div class="quantity-control">
-    <button @click="$emit('addProduct', product)">+</button>
-    <button @click="$emit('removeProduct', product)">–</button>
+    <button @click="addProduct">+</button>
+    <button @click="removeProduct">–</button>
   </div>
 </template>
 
 <script>
 export default {
   name: "CartModalItem",
-  emits: ["addProduct", "removeProduct"],
   props: {
     product: {
       type: Object,
       required: true,
+    },
+  },
+  methods: {
+    addProduct() {
+      this.$store.dispatch("cart/addToCartHandler", {
+        shopItem: this.product,
+      });
+    },
+    removeProduct() {
+      this.$store.dispatch("cart/removeProductHandler", {
+        shopItem: this.product,
+      });
     },
   },
 };

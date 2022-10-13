@@ -10,7 +10,7 @@
           class="cart-icon"
           src="/assets/images/website/cart.png"
           alt="cart icon"
-          @click="$emit('toggleCart')"
+          @click="toggleCartModal"
         />
         <span class="product-amount">{{ totalCartProducts }}</span>
       </button>
@@ -21,9 +21,15 @@
 <script>
 export default {
   name: "TheHeader",
-  emits: ["toggleCart"],
-  props: {
-    totalCartProducts: Number,
+  computed: {
+    totalCartProducts() {
+      return this.$store.getters["cart/totalCartProducts"];
+    },
+  },
+  methods: {
+    toggleCartModal() {
+      this.$store.dispatch("cart/toggleCartModal");
+    },
   },
 };
 </script>

@@ -35,8 +35,6 @@ export default {
     const imageUrl = "/vue-shopping-cart/assets/images/products/";
     return { imageUrl };
   },
-  emits: ["addProduct"],
-
   data() {
     return {
       buttonStyle: "add-btn",
@@ -44,13 +42,14 @@ export default {
   },
   computed: {
     highlightedProduct() {
-
       return this.$store.getters["products/highlightedProduct"];
     },
   },
   methods: {
     addToCart() {
-      this.$emit("addProduct", this.product);
+      this.$store.dispatch("cart/addToCartHandler", {
+        shopItem: this.highlightedProduct,
+      });
       this.buttonStyle = "add-btn loading";
       setTimeout(() => {
         this.buttonStyle = "add-btn added";

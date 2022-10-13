@@ -1,11 +1,15 @@
 <template>
-  <div @click="$emit('toggleCart')"></div>
+  <div @click="toggleCartModal"></div>
 </template>
 
 <script>
 export default {
   name: "CartBackdrop",
-  emits: ["toggleCart"],
+  methods: {
+    toggleCartModal() {
+      this.$store.dispatch("cart/toggleCartModal");
+    },
+  },
 };
 </script>
 

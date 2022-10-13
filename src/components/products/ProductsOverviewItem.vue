@@ -22,7 +22,6 @@
 <script>
 export default {
   name: "ProductsOverviewItem",
-  emits: ["selectHighlightedProduct", "addProduct"],
   setup() {
     const imageUrl = "/vue-shopping-cart/assets/images/products/";
     return { imageUrl };
@@ -42,7 +41,9 @@ export default {
       });
     },
     addToCart() {
-      this.$emit("addProduct", this.product);
+      this.$store.dispatch("cart/addToCartHandler", {
+        shopItem: this.product,
+      });
       this.buttonStyle = "add-btn loading";
       setTimeout(() => {
         this.buttonStyle = "add-btn added";
