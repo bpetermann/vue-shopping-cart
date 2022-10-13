@@ -13,12 +13,7 @@
   <TheSearchbar />
   <TheCategories />
   <TheHero />
-  <span v-if="isLoading">
-    <img
-      class="loading"
-      src="/assets/images/website/spinner.gif"
-      alt="Loading..."
-  /></span>
+  <span v-if="isLoading"> <BaseSpinner /></span>
   <template v-else-if="productsFetched">
     <ProductHighlight @addProduct="addToCartHandler" />
     <ProductsOverview @addProduct="addToCartHandler" />
@@ -127,14 +122,6 @@ export default {
 </script>
 
 <style scoped>
-.loading {
-  width: 2rem;
-  height: 2rem;
-  margin: auto;
-  padding-top: 4rem;
-  display: block;
-}
-
 p {
   margin-top: 2rem;
   text-align: center;
