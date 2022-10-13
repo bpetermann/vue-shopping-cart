@@ -4,7 +4,7 @@
       <div class="info">
         <h2>DROP 02 SUMMER 2022</h2>
         <p>The 3 Pairs of Shoes You Need for this Summer</p>
-        <button @click="$emit('selectCategory', 'Shoes')">Shop now -></button>
+        <button @click="selectCategory('Shoes')">Shop now -></button>
       </div>
       <img src="/assets/images/website/model.png" alt="Sneaker Model" />
     </div>
@@ -14,7 +14,11 @@
 <script>
 export default {
   name: "TheHero",
-  emits: ["selectCategory"],
+  methods: {
+    selectCategory(category) {
+      this.$store.dispatch("products/selectCategoryHandler", { category });
+    },
+  },
 };
 </script>
 

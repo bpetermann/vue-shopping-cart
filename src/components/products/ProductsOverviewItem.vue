@@ -37,7 +37,9 @@ export default {
   },
   methods: {
     highlightedProduct() {
-      this.$emit("selectHighlightedProduct", this.product.id);
+      this.$store.dispatch("products/selectHighlightedProduct", {
+        prodId: this.product.id,
+      });
     },
     addToCart() {
       this.$emit("addProduct", this.product);

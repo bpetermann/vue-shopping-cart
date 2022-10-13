@@ -20,7 +20,9 @@ export default {
   },
   methods: {
     search(e) {
-      this.$emit("searchTermHandler", e.target.value);
+      this.$store.dispatch("products/searchTermHandler", {
+        searchTerm: e.target.value,
+      });
     },
   },
 };

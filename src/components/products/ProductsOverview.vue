@@ -1,10 +1,9 @@
 <template>
   <section>
     <ul>
-      <li v-for="product in products" :key="product.id">
+      <li v-for="product in filteredItems" :key="product.id">
         <ProductsOverviewItem
           :product="product"
-          @selectHighlightedProduct="$emit('selectHighlightedProduct', $event)"
           @addProduct="$emit('addProduct', $event)"
         />
       </li>
@@ -16,14 +15,13 @@
 import ProductsOverviewItem from "./ProductsOverviewItem.vue";
 export default {
   name: "ProductsOverview",
-  emits: ["selectHighlightedProduct", "addProduct"],
+  emits: ["addProduct"],
   components: {
     ProductsOverviewItem,
   },
-  props: {
-    products: {
-      type: Array,
-      required: true,
+  computed: {
+    filteredItems() {
+      return this.$store.getters["products/filteredItems"];
     },
   },
 };

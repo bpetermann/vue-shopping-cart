@@ -2,14 +2,14 @@
   <section>
     <div>
       <button
-        :class="{ active: active === 'Shoes' }"
-        @click="$emit('selectCategory', 'Shoes')"
+        :class="{ active: categoryActive === 'Shoes' }"
+        @click="selectCategory('Shoes')"
       >
         Shoes
       </button>
       <button
-        :class="{ active: active === 'Bags' }"
-        @click="$emit('selectCategory', 'Bags')"
+        :class="{ active: categoryActive === 'Bags' }"
+        @click="selectCategory('Bags')"
       >
         Bags
       </button>
@@ -20,11 +20,14 @@
 <script>
 export default {
   name: "TheCategories",
-  emits: ["selectCategory"],
-  props: {
-    active: {
-      type: String,
-      required: true,
+  computed: {
+    categoryActive() {
+      return this.$store.getters["products/selectedCategory"];
+    },
+  },
+  methods: {
+    selectCategory(category) {
+      this.$store.dispatch("products/selectCategoryHandler", { category });
     },
   },
 };

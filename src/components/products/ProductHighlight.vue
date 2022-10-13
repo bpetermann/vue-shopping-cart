@@ -2,13 +2,13 @@
   <section>
     <div class="product">
       <img
-        :src="`${this.imageUrl}${product.name}.png`"
-        :alt="product.description"
+        :src="`${this.imageUrl}${highlightedProduct.name}.png`"
+        :alt="highlightedProduct.description"
       />
       <div class="product-info">
-        <h2>{{ product.name }}</h2>
-        <p>{{ product.description }}</p>
-        <p>€{{ product.price }}</p>
+        <h2>{{ highlightedProduct.name }}</h2>
+        <p>{{ highlightedProduct.description }}</p>
+        <p>€{{ highlightedProduct.price }}</p>
         <form @submit.prevent="addToCart">
           <select>
             <option value="one">One Size</option>
@@ -36,19 +36,17 @@ export default {
     return { imageUrl };
   },
   emits: ["addProduct"],
-  props: {
-    product: {
-      type: Object,
-      required: true,
-      validator: function (value) {
-        return Object.hasOwn(value, "id");
-      },
-    },
-  },
+
   data() {
     return {
       buttonStyle: "add-btn",
     };
+  },
+  computed: {
+    highlightedProduct() {
+
+      return this.$store.getters["products/highlightedProduct"];
+    },
   },
   methods: {
     addToCart() {
