@@ -82,14 +82,17 @@ button {
 }
 
 .product-amount {
-  padding: 0 0.4rem;
-  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.2rem;
+  height: 1.2rem;
   position: relative;
   top: -3.1rem;
   left: 1rem;
   border-radius: 50%;
   background-color: #ff6900;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: #fff;
 }
