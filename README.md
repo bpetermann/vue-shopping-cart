@@ -3,6 +3,11 @@
 - Just learning Vue by rebuilding my [shopping-cart](https://github.com/bpetermann/shopping-cart) project with vue.js
 - [View Live](https://bpetermann.github.io/vue-shopping-cart/)
 
+
+### Tools
+- [Vue](https://vuejs.org/guide/quick-start.html)
+- [Vuex](https://vuex.vuejs.org/)
+
 ### Thanks
 
 - Model photo by <a href="https://unsplash.com/@sadswim?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">ian dooley</a> on <a href="https://unsplash.com/s/photos/model?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a><br>
