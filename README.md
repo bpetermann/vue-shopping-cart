@@ -20,7 +20,7 @@
 
 ```
 git clone https://github.com/bpetermann/vue-shopping-cart.git
-cd cv-application
+cd vue-shopping-cart
 npm install
 npm run dev
 ```
