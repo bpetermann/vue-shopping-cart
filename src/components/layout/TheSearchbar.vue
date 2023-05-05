@@ -32,7 +32,6 @@ section {
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 3rem;
   background-color: #fff;
   border-bottom: 1px solid #d0d1d3;
 }
