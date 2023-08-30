@@ -1,8 +1,6 @@
 ## Vue Shopping Cart
 
 - Just learning Vue by rebuilding my [shopping-cart](https://github.com/bpetermann/shopping-cart) project with vue.js
-- [View Live](https://bpetermann.github.io/vue-shopping-cart/)
-
 
 ### Tools
 - [Vue](https://vuejs.org/guide/quick-start.html)
